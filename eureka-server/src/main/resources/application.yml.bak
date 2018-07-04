@@ -1,0 +1,59 @@
+server:
+  port: 1000
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    name: eureka-server
+  profiles: prod1
+eureka:
+  instance:
+    hostname: eureka1.spring.com
+    #prefer-ip-address: true
+  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+    service-url:
+      defaultZone: http://admin:admin@eureka2.spring.com:1001/eureka/,http://admin:admin@eureka3.spring.com:1002/eureka/
+---
+server:
+  port: 1001
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    name: eureka-server
+  profiles: prod2
+eureka:
+  instance:
+    hostname: eureka2.spring.com
+    #prefer-ip-address: true
+  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+    service-url:
+      defaultZone: http://admin:admin@eureka1.spring.com:1000/eureka/,http://admin:admin@eureka3.spring.com:1002/eureka/
+---
+server:
+  port: 1002
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    name: eureka-server
+  profiles: prod3
+eureka:
+  instance:
+    hostname: eureka3.spring.com
+    #prefer-ip-address: true
+  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+    service-url:
+      defaultZone: http://admin:admin@eureka1.spring.com:1000/eureka/,http://admin:admin@eureka2.spring.com/eureka/

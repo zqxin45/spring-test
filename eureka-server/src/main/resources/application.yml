@@ -1,0 +1,69 @@
+prod1:
+  eureka:
+    server:
+      port: 8501
+    hostname: eureka1.spring.com
+prod2:
+  eureka:
+    server:
+      port: 8502
+    hostname: eureka2.spring.com
+prod3:
+  eureka:
+    server:
+      port: 8503
+    hostname: eureka3.spring.com
+dev:
+  eureka:
+    server:
+      port: 8500
+    hostname: eureka.spring.com
+
+
+logging:
+  path: ./logs/spring-eureka
+  file: ${logging.path}/root.log
+  common-pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS}:[%5p] [%t:%r] [%C{1}:%M:%L] --> %m%n'
+  level:
+    console: INFO
+
+# 公共配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spring-eureka
+  security:
+    user:
+      name: admin
+      password: ${SECURITY_USER_PASSWORD:admin}
+management:
+  endpoints:
+    web:
+      base-path: /mgmt
+
+#management:
+#  security:
+#    enabled: true
+#  context-path: /mgmt
+
+#security:
+#  basic:
+#    enabled: true
+#    path: ${management.context-path}
+#  user:
+#    name: admin
+#    password: ${SECURITY_USER_PASSWORD:admin}
+#endpoints:
+#  health:
+#    enabled: true
+#    sensitive: true
+#  enabled: true # actuator的health接口是否需要安全保证
+
+info:
+  artifact: spring-eureka
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'
+  spring-boot-version: '@spring.boot.version@'
+  spring-cloud-version: '@spring.cloud.version@'
