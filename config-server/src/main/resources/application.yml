@@ -1,0 +1,23 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: ${SECURITY_USER_PASSWORD:admin}
+  application:
+    name: config-server
+  cloud:
+    config:
+      enabled: true
+      server:
+        git:
+          uri: file://D:/project/java/git
+          search-paths: config-repo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8500/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+server:
+  port: 3000

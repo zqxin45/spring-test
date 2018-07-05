@@ -1,4 +1,9 @@
 spring:
   cloud:
     config:
-      enabled: false
+      enabled: true
+      uri: http://admin:admin@localhost:3000
+      profile: prod
+      name: foo
+  profiles:
+      active: dev,prod,test
